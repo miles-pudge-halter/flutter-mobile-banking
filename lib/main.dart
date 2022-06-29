@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mobile_banking/services_widget.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_banking/dashboard/dashboard_page.dart';
+import 'package:mobile_banking/home/home_page.dart';
+import 'package:mobile_banking/home/widgets/services_widget.dart';
 
-import 'recent_transactions_widget.dart';
+import 'home/widgets/recent_transactions_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,82 +35,12 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+        fontFamily: GoogleFonts.poppins().fontFamily
       ),
       home: const DashboardPage(),
     );
   }
 }
-
-class DashboardPage extends StatelessWidget {
-  const DashboardPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
-          children: [
-            const _HeaderWidget(),
-            const SizedBox(height: 10),
-            const ServicesWidget(),
-            const SizedBox(height: 10),
-            const RecentTransactionsWidget(),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.search),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        notchMargin: 8,
-        shape: CircularNotchedRectangle(),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Expanded(
-              flex: 2,
-              child: IconButton(
-                padding: EdgeInsets.all(16),
-                icon: Icon(Icons.home_filled),
-                onPressed: () {},
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: IconButton(
-                padding: EdgeInsets.all(16),
-                icon: Icon(Icons.pie_chart),
-                onPressed: () {},
-              ),
-            ),
-            Expanded(flex: 3, child: SizedBox()),
-            Expanded(
-              flex: 2,
-              child: IconButton(
-                padding: EdgeInsets.all(16),
-                icon: Icon(Icons.bar_chart),
-                onPressed: () {},
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: IconButton(
-                padding: EdgeInsets.all(16),
-                icon: Icon(Icons.person),
-                onPressed: () {},
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class CurvedPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
@@ -131,39 +64,5 @@ class CurvedPainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
     return true;
-  }
-}
-
-class _HeaderWidget extends StatelessWidget {
-  const _HeaderWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      child: Row(
-        children: [
-          const CircleAvatar(
-            radius: 25,
-            backgroundImage: NetworkImage(
-                'https://pbs.twimg.com/profile_images/1439953850471911426/s4pE9SYa_400x400.jpg'),
-          ),
-          const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Hello, Tony',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-              Text(
-                'Welcome back!',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
   }
 }
