@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_banking/models/transaction.dart';
 
 class RecentTransactionsWidget extends StatelessWidget {
@@ -9,22 +10,22 @@ class RecentTransactionsWidget extends StatelessWidget {
         'Netflix',
         '01 January, 05:15 PM',
         'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Netflix_icon.svg/1024px-Netflix_icon.svg.png',
-        '\$25.00',
+        '\$24.99',
         TrxType.outgoing),
     Transaction(
-        'Apple music subscription',
+        'Apple Music Subscription',
         '01 January, 05:15 PM',
         'https://1000logos.net/wp-content/uploads/2016/10/Apple_logo_grey.png',
         '\$12.99',
         TrxType.outgoing),
     Transaction(
-        'Spotify family',
+        'Spotify Family',
         '01 January, 07:00 PM',
         'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png',
-        '\$15.00',
+        '\$14.99',
         TrxType.outgoing),
     Transaction(
-        'YouTube premium subscription',
+        'YouTube Premium Subscription',
         '01 January, 05:15 PM',
         'https://i.pinimg.com/564x/09/0d/ae/090daea33cd0d47dab065800d9e55334.jpg',
         '\$10.99',
@@ -35,10 +36,10 @@ class RecentTransactionsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.grey.shade50,
           boxShadow: [
             BoxShadow(
-              color: Colors.blue.shade50,
+              color: Colors.grey.shade200,
               blurRadius: 10,
               spreadRadius: 4,
               blurStyle: BlurStyle.normal,
@@ -58,7 +59,10 @@ class RecentTransactionsWidget extends StatelessWidget {
               children: [
                 Text(
                   'Recent transactions',
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const Text(
                   'See all',
@@ -103,9 +107,12 @@ class RecentTransactionItem extends StatelessWidget {
                 children: [
                   Text(
                     transaction.title,
-                    style: Theme.of(context).textTheme.labelLarge,
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelLarge
+                        ?.copyWith(fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 2),
                   Text(
                     transaction.dateTime,
                     style: Theme.of(context).textTheme.bodySmall,
@@ -114,7 +121,13 @@ class RecentTransactionItem extends StatelessWidget {
               ),
             ],
           ),
-          Text(transaction.amount),
+          Text(
+            transaction.amount,
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  fontFamily: GoogleFonts.inconsolata().fontFamily,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
         ],
       ),
     );

@@ -35,7 +35,7 @@ class _HeaderWidget extends StatelessWidget {
       child: Row(
         children: [
           const CircleAvatar(
-            radius: 25,
+            radius: 28,
             backgroundImage: NetworkImage(
                 'https://pbs.twimg.com/profile_images/1439953850471911426/s4pE9SYa_400x400.jpg'),
           ),
@@ -45,11 +45,17 @@ class _HeaderWidget extends StatelessWidget {
             children: [
               Text(
                 'Hello, Tony',
-                style: Theme.of(context).textTheme.bodySmall,
+                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w100
+                ),
               ),
               Text(
                 'Welcome back!',
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge
+                    ?.copyWith(fontWeight: FontWeight.bold),
               ),
             ],
           ),

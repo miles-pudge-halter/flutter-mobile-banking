@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CreditCardWidget extends StatelessWidget {
   const CreditCardWidget({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class CreditCardWidget extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+            borderRadius: BorderRadius.all(Radius.circular(18)),
             boxShadow: [
               BoxShadow(
                 color: Colors.blue.shade200,
@@ -42,8 +43,8 @@ class CreditCardWidget extends StatelessWidget {
           left: 16,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
+            children: [
+              const Text(
                 'Current Balance',
                 style: TextStyle(
                   color: Color(0x99ffffff),
@@ -51,23 +52,30 @@ class CreditCardWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                '\$7,252,412.00',
+                '\$252,412.00',
                 style: TextStyle(
+                  fontFamily: GoogleFonts.inconsolata().fontFamily,
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 26,
                   fontWeight: FontWeight.bold,
-                  letterSpacing: 1.5,
                 ),
               ),
             ],
           ),
         ),
-        const Positioned(
+        Positioned(
           bottom: 16,
           left: 16,
           child: Text(
             '1234 1234 1234 1234',
             style: TextStyle(
+              shadows: [
+                Shadow(
+                    offset: Offset(0, 3),
+                    blurRadius: 3,
+                    color: Colors.grey.shade800)
+              ],
+              fontFamily: GoogleFonts.inconsolata().fontFamily,
               color: Colors.white,
               fontSize: 16,
             ),
@@ -89,7 +97,7 @@ class CreditCardWidget extends StatelessWidget {
           right: 16,
           child: Image.asset(
             'assets/mastercard_logo.png',
-            width: 50,
+            width: 55,
           ),
         )
       ],

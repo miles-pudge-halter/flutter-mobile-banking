@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 
 class FABBottomAppBarItem {
-  FABBottomAppBarItem({required this.iconData, required this.text});
-  IconData iconData;
+  FABBottomAppBarItem({required this.icon, required this.selectedIcon, required this.text});
+
+  IconData selectedIcon;
+  IconData icon;
   String text;
 }
 
 class FABBottomAppBar extends StatefulWidget {
-  FABBottomAppBar({Key? key,
+  FABBottomAppBar({
+    Key? key,
     required this.items,
     this.centerItemText,
     this.height = 60.0,
-    this.iconSize = 24.0,
+    this.iconSize = 28.0,
     required this.backgroundColor,
     required this.color,
     required this.selectedColor,
@@ -20,20 +23,20 @@ class FABBottomAppBar extends StatefulWidget {
   }) : super(key: key) {
     assert(items.length == 2 || items.length == 4);
   }
+
   final List<FABBottomAppBarItem> items;
   final String? centerItemText;
   final double height;
   final double iconSize;
   final Color backgroundColor;
-  final Color color;
-  final Color selectedColor;
+  final List<Color> color;
+  final List<Color> selectedColor;
   final NotchedShape notchedShape;
   final ValueChanged<int> onTabSelected;
 
   @override
   State<StatefulWidget> createState() => _FABBottomAppBarState();
 }
-
 
 class _FABBottomAppBarState extends State<FABBottomAppBar> {
   int _selectedIndex = 0;
@@ -44,6 +47,7 @@ class _FABBottomAppBarState extends State<FABBottomAppBar> {
       _selectedIndex = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     List<Widget> items = List.generate(widget.items.length, (int index) {
@@ -56,7 +60,9 @@ class _FABBottomAppBarState extends State<FABBottomAppBar> {
     items.insert(items.length >> 1, _buildMiddleTabItem());
 
     return BottomAppBar(
+      elevation: 35,
       shape: widget.notchedShape,
+      notchMargin: 10,
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -64,8 +70,8 @@ class _FABBottomAppBarState extends State<FABBottomAppBar> {
       ),
       color: widget.backgroundColor,
     );
-
   }
+
   Widget _buildMiddleTabItem() {
     return Expanded(
       child: SizedBox(
@@ -77,19 +83,19 @@ class _FABBottomAppBarState extends State<FABBottomAppBar> {
             SizedBox(height: widget.iconSize),
             Text(
               widget.centerItemText ?? '',
-              style: TextStyle(color: widget.color),
             ),
           ],
         ),
       ),
     );
   }
+
   Widget _buildTabItem({
     required FABBottomAppBarItem item,
     required int index,
     required ValueChanged<int> onPressed,
   }) {
-    Color color = _selectedIndex == index ? widget.selectedColor : widget.color;
+    List<Color> colors = _selectedIndex == index ? widget.selectedColor : widget.color;
     return Expanded(
       child: SizedBox(
         height: widget.height,
@@ -101,7 +107,14 @@ class _FABBottomAppBarState extends State<FABBottomAppBar> {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(item.iconData, color: color, size: widget.iconSize),
+                LinearGradientMask(
+                  colors: colors,
+                  child: Icon(
+                    _selectedIndex == index ? item.selectedIcon : item.icon,
+                    color: Colors.white,
+                    size: widget.iconSize,
+                  ),
+                ),
                 // Text(
                 //   item.text,
                 //   style: TextStyle(color: color),
@@ -111,6 +124,25 @@ class _FABBottomAppBarState extends State<FABBottomAppBar> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class LinearGradientMask extends StatelessWidget {
+  LinearGradientMask({required this.child, required this.colors});
+  final Widget child;
+  final List<Color> colors;
+
+  @override
+  Widget build(BuildContext context) {
+    return ShaderMask(
+      shaderCallback: (bounds) => LinearGradient(
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        colors: colors,
+        tileMode: TileMode.mirror,
+      ).createShader(bounds),
+      child: child,
     );
   }
 }

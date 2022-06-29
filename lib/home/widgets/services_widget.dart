@@ -12,7 +12,11 @@ class ServicesWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Services', style: Theme.of(context).textTheme.titleLarge),
+              Text('Services',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.copyWith(fontWeight: FontWeight.bold)),
               const Text(
                 'See all',
                 style: TextStyle(color: Colors.blueAccent),
@@ -52,12 +56,19 @@ class ServiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade100,
+            blurRadius: 7,
+            spreadRadius: 2,
+          ),
+        ],
+        shape: BoxShape.rectangle,
+        borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
-      shadowColor: Colors.lightBlue[100],
       margin: const EdgeInsets.all(8),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),

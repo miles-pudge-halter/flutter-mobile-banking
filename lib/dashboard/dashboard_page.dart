@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:mobile_banking/dashboard/fab_bottom_app_bar.dart';
 import 'package:mobile_banking/profile_page.dart';
@@ -48,13 +47,29 @@ class _DashboardPageState extends State<DashboardPage> {
         notchedShape: const CircularNotchedRectangle(),
         backgroundColor: Colors.white,
         onTabSelected: _selectTab,
-        selectedColor: Colors.blue,
-        color: Colors.grey,
+        selectedColor: [Colors.blue.shade700, Colors.blue.shade200],
+        color: [Colors.grey.shade700, Colors.grey.shade700],
         items: [
-          FABBottomAppBarItem(iconData: Icons.home, text: 'This'),
-          FABBottomAppBarItem(iconData: Icons.pie_chart, text: 'Is'),
-          FABBottomAppBarItem(iconData: Icons.bar_chart, text: 'Bottom'),
-          FABBottomAppBarItem(iconData: Icons.person, text: 'Bar'),
+          FABBottomAppBarItem(
+            selectedIcon: Icons.home,
+            icon: Icons.home_outlined,
+            text: 'This',
+          ),
+          FABBottomAppBarItem(
+            selectedIcon: Icons.pie_chart,
+            icon: Icons.pie_chart_outline,
+            text: 'Is',
+          ),
+          FABBottomAppBarItem(
+            selectedIcon: Icons.bar_chart,
+            icon: Icons.bar_chart_outlined,
+            text: 'Bottom',
+          ),
+          FABBottomAppBarItem(
+            selectedIcon: Icons.person,
+            icon: Icons.person_outline,
+            text: 'Bar',
+          ),
         ],
       ),
     );
