@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_banking/breakdown/breakdown_page.dart';
 import 'package:mobile_banking/dashboard/fab_bottom_app_bar.dart';
 import 'package:mobile_banking/profile_page.dart';
-import 'package:mobile_banking/statistics_page.dart';
+import 'package:mobile_banking/statistics/statistics_page.dart';
 
 import '../home/home_page.dart';
 
@@ -17,7 +18,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
   List<Widget> tabs = [
     HomePage(),
-    StatisticsPage(),
+    BreakdownPage(),
     StatisticsPage(),
     ProfilePage(),
   ];

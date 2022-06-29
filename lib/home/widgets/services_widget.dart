@@ -56,43 +56,46 @@ class ServiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade100,
-            blurRadius: 7,
-            spreadRadius: 2,
-          ),
-        ],
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-      ),
-      margin: const EdgeInsets.all(8),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  colors: gradient,
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade100,
+              blurRadius: 7,
+              spreadRadius: 2,
+            ),
+          ],
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+        ),
+        margin: const EdgeInsets.all(8),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: gradient,
+                  ),
+                ),
+                child: Icon(
+                  icon,
+                  size: 25,
+                  color: color,
                 ),
               ),
-              child: Icon(
-                icon,
-                size: 25,
-                color: color,
-              ),
-            ),
-            Text(title),
-          ],
+              Text(title),
+            ],
+          ),
         ),
       ),
     );
