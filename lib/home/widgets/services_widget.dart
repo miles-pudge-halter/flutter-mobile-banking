@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_banking/transfer/transfer_page.dart';
 
 class ServicesWidget extends StatelessWidget {
   const ServicesWidget({Key? key}) : super(key: key);
@@ -31,13 +32,15 @@ class ServicesWidget extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             children: [
               ServiceCard('Transfer', Icons.north, Colors.blue,
-                  const [Color(0xffd3e7ff), Color(0xffedf8ff)]),
+                  const [Color(0xffd3e7ff), Color(0xffedf8ff)], () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => TransferPage() ));
+                  }),
               ServiceCard('Request', Icons.south, Colors.pink,
-                  const [Color(0xffffc9c9), Color(0xffffeaea)]),
+                  const [Color(0xffffc9c9), Color(0xffffeaea)], () {}),
               ServiceCard('Pay Bill', Icons.wallet, Colors.orange,
-                  const [Color(0xffffe9ba), Color(0xfffff7e8)]),
+                  const [Color(0xffffe9ba), Color(0xfffff7e8)], () {}),
               ServiceCard('Invoice', Icons.receipt_long, Colors.green,
-                  const [Color(0xffb8ffb7), Color(0xffe8ffe8)]),
+                  const [Color(0xffb8ffb7), Color(0xffe8ffe8)], () {}),
             ],
           ),
         )
@@ -52,12 +55,15 @@ class ServiceCard extends StatelessWidget {
   final Color color;
   final List<Color> gradient;
 
-  ServiceCard(this.title, this.icon, this.color, this.gradient);
+  final void Function() onTapCallback;
+
+  ServiceCard(
+      this.title, this.icon, this.color, this.gradient, this.onTapCallback);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onTapCallback,
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,

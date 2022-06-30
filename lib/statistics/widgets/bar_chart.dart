@@ -38,8 +38,8 @@ class _TransactionsChartState extends State<TransactionsChart> {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1.5,
+    return SizedBox(
+      height: 300,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.start,

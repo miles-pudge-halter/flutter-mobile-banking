@@ -47,7 +47,7 @@ class RecentTransactionsWidget extends StatelessWidget {
           ],
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30), topRight: Radius.circular(30))),
+              topLeft: Radius.circular(40), topRight: Radius.circular(40))),
       clipBehavior: Clip.hardEdge,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),

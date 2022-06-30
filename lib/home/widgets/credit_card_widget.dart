@@ -71,7 +71,7 @@ class CreditCardWidget extends StatelessWidget {
             style: TextStyle(
               shadows: [
                 Shadow(
-                    offset: Offset(0, 3),
+                    offset: Offset(1, 1),
                     blurRadius: 3,
                     color: Colors.grey.shade800)
               ],
