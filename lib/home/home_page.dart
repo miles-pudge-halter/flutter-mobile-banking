@@ -37,7 +37,7 @@ class _HeaderWidget extends StatelessWidget {
           const CircleAvatar(
             radius: 28,
             backgroundImage: NetworkImage(
-                'https://pbs.twimg.com/profile_images/1439953850471911426/s4pE9SYa_400x400.jpg'),
+                'https://cdn.pixabay.com/photo/2021/07/20/14/59/iron-man-6480952_960_720.jpg'),
           ),
           const SizedBox(width: 10),
           Column(
