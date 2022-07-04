@@ -75,7 +75,8 @@ class RecentTransactionsWidget extends StatelessWidget {
               shrinkWrap: true,
               children:
                   transactions.map((e) => RecentTransactionItem(e)).toList(),
-            )
+            ),
+            SizedBox(height: 30)
           ],
         ),
       ),

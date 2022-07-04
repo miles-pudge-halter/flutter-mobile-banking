@@ -63,8 +63,9 @@ class TransferPage extends StatelessWidget {
                 ],
                 shape: BoxShape.rectangle,
                 borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40)),
+                  topLeft: Radius.circular(40),
+                  topRight: Radius.circular(40),
+                ),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(24.0),
@@ -89,7 +90,7 @@ class TransferPage extends StatelessWidget {
                     ConfirmationSlider(
                       onConfirmation: () {
                         showDialog(
-                           barrierDismissible: false,
+                            barrierDismissible: false,
                             context: context,
                             builder: (BuildContext context) {
                               return Dialog(
@@ -141,7 +142,8 @@ class TransferPage extends StatelessWidget {
                                                             Colors.blueAccent),
                                                   ))),
                                               onPressed: () {
-                                                Navigator.popUntil(context, ModalRoute.withName('/'));
+                                                Navigator.popUntil(context,
+                                                    ModalRoute.withName('/'));
                                               },
                                               child: const Text(
                                                 'Ok',
